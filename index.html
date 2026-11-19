@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La Quinua de Challapata</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7f2;
+            color: #263326;
+            line-height: 1.7;
+        }
+
+        /* ================= MENU ================= */
+
+        header {
+            background: #234d20;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #e6c84f;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e6c84f;
+        }
+
+        /* ================= PORTADA ================= */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(rgba(22,55,18,0.72), rgba(22,55,18,0.72)),
+                url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #e6c84f;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #d5b53c;
+            color: #1e321b;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            transform: scale(1.05);
+            background: white;
+        }
+
+        /* ================= SECCIONES ================= */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titulo h2 {
+            font-size: 40px;
+            color: #285522;
+            margin-bottom: 10px;
+        }
+
+        .titulo p {
+            max-width: 750px;
+            margin: auto;
+            color: #666;
+        }
+
+        /* ================= PRESENTACION ================= */
+
+        .presentacion {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .presentacion img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .presentacion h3 {
+            font-size: 30px;
+            color: #285522;
+            margin-bottom: 15px;
+        }
+
+        /* ================= INFORMACION ================= */
+
+        .informacion {
+            background: white;
+        }
+
+        .texto-grande {
+            max-width: 1000px;
+            margin: auto;
+            text-align: justify;
+            font-size: 18px;
+        }
+
+        .texto-grande p {
+            margin-bottom: 20px;
+        }
+
+        /* ================= TARJETAS ================= */
+
+        .tarjetas {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            border-top: 5px solid #6d8f35;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .icono {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta h3 {
+            color: #285522;
+            margin-bottom: 12px;
+        }
+
+        /* ================= PROPIEDADES ================= */
+
+        .propiedades {
+            background: #edf2e7;
+        }
+
+        .tabla-contenedor {
+            max-width: 1000px;
+            margin: auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #285522;
+            color: white;
+            padding: 18px;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tr:hover {
+            background: #f1f5e9;
+        }
+
+        /* ================= CHALLAPATA ================= */
+
+        .challapata {
+            background: #fff;
+        }
+
+        .caja-challapata {
+            max-width: 1100px;
+            margin: auto;
+            background: #f0f4e9;
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 7px solid #6d8f35;
+        }
+
+        .caja-challapata h3 {
+            color: #285522;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* ================= CONSUMO ================= */
+
+        .consumo {
+            background: #f5f1df;
+        }
+
+        .lista-consumo {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .consumo-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .consumo-item h3 {
+            color: #8a6815;
+            margin-bottom: 10px;
+        }
+
+        /* ================= PRODUCTOS ================= */
+
+        .productos {
+            background: white;
+        }
+
+        .producto-card {
+            text-align: center;
+        }
+
+        .producto-card .numero {
+            font-size: 45px;
+            font-weight: bold;
+            color: #d0ae35;
+        }
+
+        /* ================= IMPORTANCIA ================= */
+
+        .importancia {
+            background: #234d20;
+            color: white;
+        }
+
+        .importancia .titulo h2 {
+            color: #e6c84f;
+        }
+
+        .importancia .titulo p {
+            color: #e4e4e4;
+        }
+
+        /* ================= GALERIA ================= */
+
+        .galeria {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.04);
+        }
+
+        /* ================= FORMULARIO ================= */
+
+        .contacto {
+            background: #edf2e7;
+        }
+
+        form {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #285522;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #285522;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #172f15;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #142d12;
+            color: white;
+            padding: 50px 8%;
+        }
+
+        .footer-contenido {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        footer h3 {
+            color: #e6c84f;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #ddd;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #456442;
+            margin-top: 35px;
+            padding-top: 25px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 900px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .presentacion,
+            .tarjetas,
+            .lista-consumo,
+            .galeria,
+            .footer-contenido {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .hero {
+                min-height: 550px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .titulo h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ======================================================
+                    MENÚ PRINCIPAL
+====================================================== -->
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            🌾 QUINUA <span>CHALLAPATA</span>
+        </div>
+
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#quinua">Quinua</a></li>
+            <li><a href="#propiedades">Propiedades</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#challapata">Challapata</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ======================================================
+                        INICIO
+====================================================== -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <h1>
+            La <span>Quinua</span>
+            de Challapata
+        </h1>
+
+        <p>
+            Conociendo el valor nutricional, cultural y productivo
+            de uno de los alimentos más importantes de nuestra región.
+        </p>
+
+        <a href="#quinua" class="boton">
+            CONOCER MÁS
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+                PRESENTACIÓN DEL PROYECTO
+====================================================== -->
+
+<section id="quinua">
+
+    <div class="titulo">
+
+        <h2>¿Qué es la quinua?</h2>
+
+        <p>
+            Un alimento ancestral de gran importancia para los pueblos andinos.
+        </p>
+
+    </div>
+
+    <div class="presentacion">
+
+        <div>
+
+            <h3>Un tesoro de los Andes</h3>
+
+            <p>
+                La quinua es un grano andino que durante generaciones
+                ha formado parte de la alimentación de diferentes
+                comunidades de la región de los Andes.
+            </p>
+
+            <br>
+
+            <p>
+                Se caracteriza por su valor nutricional y por su capacidad
+                de adaptarse a diferentes condiciones climáticas y tipos
+                de suelo.
+            </p>
+
+            <br>
+
+            <p>
+                En Bolivia representa mucho más que un alimento, ya que
+                también está relacionada con la cultura, la tradición y
+                las actividades productivas de numerosas familias.
+            </p>
+
+        </div>
+
+        <div>
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKiLNxSxHYspNURvwF-pFVn7zFfr-g1a_RYsGKYcLAzg&s=10"
+                alt="Quinua">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+                    HISTORIA
+====================================================== -->
+
+<section class="informacion">
+
+    <div class="titulo">
+
+        <h2>Historia y origen</h2>
+
+    </div>
+
+    <div class="texto-grande">
+
+        <p>
+            La quinua es uno de los cultivos originarios de la región
+            andina de Sudamérica. Su cultivo se desarrolló durante
+            muchos siglos antes de la llegada de los europeos.
+        </p>
+
+        <p>
+            Las comunidades andinas aprendieron a cultivar y conservar
+            este alimento aprovechando las características de los
+            diferentes pisos ecológicos de la región.
+        </p>
+
+        <p>
+            Con el paso del tiempo, la quinua se convirtió en un producto
+            reconocido no solamente dentro de Bolivia, sino también en
+            diferentes países del mundo debido a sus características
+            nutricionales.
+        </p>
+
+        <p>
+            Actualmente continúa siendo un producto importante para
+            la alimentación, la agricultura y la economía de muchas
+            familias bolivianas.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+                    BENEFICIOS
+====================================================== -->
+
+<section id="beneficios">
+
+    <div class="titulo">
+
+        <h2>Beneficios de la quinua</h2>
+
+        <p>
+            Algunas de las características que hacen de la quinua
+            un alimento importante.
+        </p>
+
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+
+            <div class="icono">💪</div>
+
+            <h3>Fuente de proteínas</h3>
+
+            <p>
+                La quinua aporta proteínas vegetales que contribuyen
+                a una alimentación variada y equilibrada.
+            </p>
+
+        </article>
+
+
+        <article class="tarjeta">
+
+            <div class="icono">🌱</div>
+
+            <h3>Origen natural</h3>
+
+            <p>
+                Es un producto agrícola tradicional de los pueblos
+                andinos y forma parte de nuestra riqueza natural.
+            </p>
+
+        </article>
+
+
+        <article class="tarjeta">
+
+            <div class="icono">⚡</div>
+
+            <h3>Aporta energía</h3>
+
+            <p>
+                Sus nutrientes pueden formar parte de diferentes
+                preparaciones destinadas a una alimentación saludable.
+            </p>
+
+        </article>
+
+
+        <article class="tarjeta">
+
+            <div class="icono">🧠</div>
+
+            <h3>Alimento nutritivo</h3>
+
+            <p>
+                Contiene diferentes nutrientes, entre ellos proteínas,
+                minerales y vitaminas.
+            </p>
+
+        </article>
+
+
+        <article class="tarjeta">
+
+            <div class="icono">🏔️</div>
+
+            <h3>Producto andino</h3>
+
+            <p>
+                Representa una parte importante de la identidad
+                agrícola y cultural de los Andes.
+            </p>
+
+        </article>
+
+
+        <article class="tarjeta">
+
+            <div class="icono">🌾</div>
+
+            <h3>Importancia económica</h3>
+
+            <p>
+                Su producción y comercialización generan oportunidades
+                para numerosas familias productoras.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+                PROPIEDADES NUTRICIONALES
+====================================================== -->
+
+<section class="propiedades" id="propiedades">
+
+    <div class="titulo">
+
+        <h2>Propiedades nutricionales</h2>
+
+        <p>
+            La quinua destaca por la variedad de nutrientes que aporta.
+        </p>
+
+    </div>
+
+    <div class="tabla-contenedor">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Importancia</th>
+                    <th>Presencia en la quinua</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Proteínas</td>
+                    <td>Contribuyen al mantenimiento y desarrollo del organismo.</td>
+                    <td>✓</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohidratos</td>
+                    <td>Aportan energía.</td>
+                    <td>✓</td>
+                </tr>
+
+                <tr>
+                    <td>Fibra</td>
+                    <td>Forma parte de una alimentación equilibrada.</td>
+                    <td>✓</td>
+                </tr>
+
+                <tr>
+                    <td>Minerales</td>
+                    <td>Participan en diferentes funciones del organismo.</td>
+                    <td>✓</td>
+                </tr>
+
+                <tr>
+                    <td>Vitaminas</td>
+                    <td>Son necesarias para diferentes procesos del organismo.</td>
+                    <td>✓</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+                QUINUA EN CHALLAPATA
+====================================================== -->
+
+<section class="challapata" id="challapata">
+
+    <div class="titulo">
+
+        <h2>La quinua en Challapata</h2>
+
+        <p>
+            Producción, tradición e identidad regional.
+        </p>
+
+    </div>
+
+    <div class="caja-challapata">
+
+        <h3>Una producción que forma parte de nuestra región</h3>
+
+        <p>
+            La producción agrícola representa una actividad importante
+            para diferentes familias de la región de Challapata.
+        </p>
+
+        <br>
+
+        <p>
+            La quinua forma parte de los productos agrícolas que pueden
+            representar una oportunidad para fortalecer la economía
+            local y promover el consumo de productos originarios.
+        </p>
+
+        <br>
+
+        <p>
+            Además de su importancia económica, la producción de quinua
+            permite mantener conocimientos y prácticas agrícolas que
+            han sido transmitidos entre generaciones.
+        </p>
+
+        <br>
+
+        <p>
+            Por esta razón, conocer y valorar la quinua producida en
+            nuestra región permite reconocer el trabajo de los
+            productores y la importancia de nuestros productos
+            originarios.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+                FORMAS DE CONSUMO
+====================================================== -->
+
+<section class="consumo">
+
+    <div class="titulo">
+
+        <h2>Formas de consumir la quinua</h2>
+
+        <p>
+            La quinua puede utilizarse en diferentes preparaciones.
+        </p>
+
+    </div>
+
+    <div class="lista-consumo">
+
+        <article class="consumo-item">
+
+            <h3>🍲 Quinua cocida</h3>
+
+            <p>
+                Puede utilizarse como acompañamiento de diferentes
+                comidas y combinarse con verduras y otros alimentos.
+            </p>
+
+        </article>
+
+
+        <article class="consumo-item">
+
+            <h3>🥣 Sopas</h3>
+
+            <p>
+                La quinua puede incorporarse en sopas y preparaciones
+                tradicionales.
+            </p>
+
+        </article>
+
+
+        <article class="consumo-item">
+
+            <h3>🥗 Ensaladas</h3>
+
+            <p>
+                Puede combinarse con verduras para preparar ensaladas
+                variadas y nutritivas.
+            </p>
+
+        </article>
+
+
+        <article class="consumo-item">
+
+            <h3>🍪 Harina</h3>
+
+            <p>
+                La quinua también puede transformarse en harina para
+                preparar diferentes productos alimenticios.
+            </p>
+
+        </article>
+
+
+        <article class="consumo-item">
+
+            <h3>🥛 Bebidas</h3>
+
+            <p>
+                Puede utilizarse como ingrediente en diferentes bebidas
+                y preparaciones.
+            </p>
+
+        </article>
+
+
+        <article class="consumo-item">
+
+            <h3>🍞 Productos derivados</h3>
+
+            <p>
+                También puede formar parte de panes, galletas y otros
+                productos elaborados.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+<section class="productos" id="productos">
+
+    <div class="titulo">
+
+        <h2>Productos derivados de la quinua</h2>
+
+        <p>
+            La transformación permite darle diferentes usos al grano.
+        </p>
+
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta producto-card">
+            <div class="numero">01</div>
+            <h3>Harina de quinua</h3>
+            <p>
+                Puede emplearse en diferentes preparaciones y productos
+                alimenticios.
+            </p>
+        </article>
+
+        <article class="tarjeta producto-card">
+            <div class="numero">02</div>
+            <h3>Galletas</h3>
+            <p>
+                Producto elaborado utilizando harina o ingredientes
+                derivados de la quinua.
+            </p>
+        </article>
+
+        <article class="tarjeta producto-card">
+            <div class="numero">03</div>
+            <h3>Bebidas</h3>
+            <p>
+                La quinua puede utilizarse como ingrediente para
+                diferentes bebidas.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+<section class="importancia">
+
+    <div class="titulo">
+
+        <h2>¿Por qué debemos valorar la quinua?</h2>
+
+        <p>
+            Valorar nuestros productos significa reconocer nuestra
+            cultura, nuestra producción y el trabajo de nuestras familias.
+        </p>
+
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+
+            <div class="icono">🏔️</div>
+
+            <h3>Identidad</h3>
+
+            <p>
+                La quinua forma parte de la historia y cultura de
+                diferentes comunidades andinas.
+            </p>
+
+        </article>
+
+        <article class="tarjeta">
+
+            <div class="icono">👨‍🌾</div>
+
+            <h3>Productores</h3>
+
+            <p>
+                Su producción representa el esfuerzo y trabajo de
+                numerosas familias.
+            </p>
+
+        </article>
+
+        <article class="tarjeta">
+
+            <div class="icono">🌎</div>
+
+            <h3>Proyección</h3>
+
+            <p>
+                La quinua tiene potencial para continuar desarrollando
+                productos con valor agregado.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+                    GALERÍA
+====================================================== -->
+
+<section id="galeria">
+
+    <div class="titulo">
+
+        <h2>Galería de la quinua</h2>
+
+        <p>
+            Imágenes relacionadas con este importante producto andino.
+        </p>
+
+    </div>
+
+    <div class="galeria">
+
+        <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThcnvf-vvNNe7Zl1DKvG7m8Itdm1-H3suDRk2EXnh-SA&s=10"
+            alt="Alimentos">
+
+        <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSawMUzhMFT6_eVOou9nFOulfsWiHjeNEe72wIgpXoMJQ&s=10"
+            alt="Alimentación">
+
+        <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoCgvHPJkG3wG8gGi1yz7eQ_zAAwB8niu3ya3TDhufOA&s=10"
+            alt="Productos alimenticios">
+
+        <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqX6sgPmNsyqQJeQgkBJDPVD_hNI__9j6kvIchpZalUA&s=10"
+            alt="Comida saludable">
+
+        <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyFgM3jKXF_UtuHNVnZt_XxJgrp2dzVLeEEx0QkN8uuw&s=10"
+            alt="Verduras">
+
+        <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMq_JKAalsdTr3Co3i7Ui1l7bC7eK_sodhEiuZFBMQVA&s=10"
+            alt="Alimentos nutritivos">
+
+    </div>
+
+</section>
+
+<section class="contacto" id="contacto">
+
+    <div class="titulo">
+
+        <h2>Formulario de contacto</h2>
+
+        <p>
+            Comparte tu opinión o realiza una consulta sobre la quinua.
+        </p>
+
+    </div>
+
+    <form>
+
+        <label for="nombre">
+            Nombre completo
+        </label>
+
+        <input
+            type="text"
+            id="nombre"
+            placeholder="Escribe tu nombre"
+            required
+        >
+
+
+        <label for="correo">
+            Correo electrónico
+        </label>
+
+        <input
+            type="email"
+            id="correo"
+            placeholder="ejemplo@gmail.com"
+            required
+        >
+
+
+        <label for="tema">
+            Tema de interés
+        </label>
+
+        <select id="tema">
+
+            <option>Información general</option>
+            <option>Propiedades nutricionales</option>
+            <option>Producción en Challapata</option>
+            <option>Productos derivados</option>
+            <option>Formas de consumo</option>
+
+        </select>
+
+
+        <label for="mensaje">
+            Mensaje
+        </label>
+
+        <textarea
+            id="mensaje"
+            placeholder="Escribe tu mensaje..."
+        ></textarea>
+
+
+        <button type="submit">
+            ENVIAR INFORMACIÓN
+        </button>
+
+    </form>
+
+</section>
+<footer>
+
+    <div class="footer-contenido">
+
+        <div>
+
+            <h3>🌾 Quinua Challapata</h3>
+
+            <p>
+                Página web informativa dedicada a difundir información
+                sobre la quinua y su importancia en nuestra región.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Información</h3>
+
+            <p>
+                Propiedades<br>
+                Beneficios<br>
+                Consumo<br>
+                Producción<br>
+                Productos derivados
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Proyecto</h3>
+
+            <p>
+                Diseño y creación de una página web informativa sobre
+                la quinua en la región de Challapata.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        <p>
+            © 2026 - Proyecto educativo sobre la quinua de Challapata
+        </p>
+
+    </div>
+
+</footer>
+
+<script>
+
+    const formulario = document.querySelector("form");
+
+    formulario.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        alert(
+            "¡Gracias por tu mensaje! Tu opinión sobre la quinua es importante."
+        );
+
+        formulario.reset();
+
+    });
+
+</script>
+
+</body>
+</html>
